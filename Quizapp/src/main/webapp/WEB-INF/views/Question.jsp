@@ -17,13 +17,15 @@
                 <li>${question.option3}</li>
                 <li>${question.option4}</li>
             </ul>
-            <p><strong>Answer: ${question.answer}</strong></p>
+            <p><strong>Answare: ${question.answare}</strong></p>
       </div>
-      <button> <a href="/question/deleteQuestion/${question.id}" 
-   onclick="return confirm('Are you sure you want to delete this question?');" >
-    Delete</a> </button> 
-	<button> <a href="/question/updateQuestion/${question.id}"> Update</a> </button>
-        <hr>
+    <a href="/question/deleteQuestion/${question.id}" 
+   onclick="return confirm('Are you sure you want to delete this question?');">
+    <button>Delete</button>
+</a>
+<a href="/question/updateQuestion/${question.id}">
+    <button>Update</button>
+</a>        <hr>
     </c:forEach>
     
      

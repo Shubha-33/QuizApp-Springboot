@@ -12,7 +12,7 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String category; //java, python
 	private String level;//advance,medium, low
 	private String question;
@@ -20,14 +20,14 @@ public class Question {
 	private String option2;
 	private String option3;
 	private String option4;
-	private String answer; 
+	private String answare; 
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCategory() {
@@ -73,12 +73,12 @@ public class Question {
 	public void setOption4(String option4) {
 		this.option4 = option4;
 	}
-	public String getAnswer() { 
-	    return answer; 
+	public String getAnsware() { 
+	    return answare; 
 	}
 
-	public void setAnswer(String answer) { 
-	    this.answer = answer; 
+	public void setAnsware(String answare) { 
+	    this.answare = answare; 
 	}
 	
 	

@@ -5,7 +5,7 @@
 </head>
 <body>
     <h2>Quiz Questions</h2>
-      <form action="/test/score" method="post">
+      <form action="/test/score/${id}" method="post">
         <c:forEach var="question" items="${questions}">
             <div>
                 <p><strong>Q: ${question.question}</strong></p>

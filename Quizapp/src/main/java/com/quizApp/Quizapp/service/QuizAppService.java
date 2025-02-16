@@ -21,7 +21,13 @@ public class QuizAppService {
 		return quizAppRepo.findByCategory(category);
 		
 	}
-
+	
+	
+	public List<Question> getQuestionsByLevel(String level) {
+		
+		return quizAppRepo.findByLevel(level);
+	}
+	
 	public String addQuestions(Question question) {
 		quizAppRepo.save(question);
 		return "save Sucessfully";
@@ -54,6 +60,7 @@ public class QuizAppService {
 		quizAppRepo.deleteById(id);
 		return "deleted sucessfully";
 	}
+
 	
 
 }

@@ -58,15 +58,22 @@ public class QuizAppController {
 //	}
 	
 		   @GetMapping("/allquestions")
-	    public String getQuestions(@RequestParam(value = "category", required = false) String category, Model model) {
+	    public String getQuestions(@RequestParam(value = "category", required = false) String category,
+	            @RequestParam(value = "level", required = false) String level,
+	    		Model model) {
 	        List<Question> questions;
 
-	        if (category == null || category.isEmpty()) {
-	        	 questions = questionService.getAllQuestions();  // for all question
-	        } else {
-	        	 questions = questionService.getQuestionsByCategory(category);  // For category wise questions
-	            model.addAttribute("selectedCategory", category); 
+	        if ((category == null || category.isEmpty()) && (level == null || level.isEmpty())) {
+	            questions = questionService.getAllQuestions();
+	            // Get all questions
+	        } else if (category != null && !category.isEmpty()) {
+	        	questions = questionService.getQuestionsByCategory(category);
+	            model.addAttribute("selectedCategory", category); // For category wise questions
 	        }
+	        else{
+	            questions = questionService.getQuestionsByLevel(level);
+	            model.addAttribute("selectedLevel", level); // Filter by level
+	            }
 	        
 	        if(questions.isEmpty()) {
 	        	model.addAttribute("noData",true);

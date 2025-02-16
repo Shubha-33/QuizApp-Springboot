@@ -2,6 +2,7 @@ package com.quizApp.Quizapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +46,26 @@ public class TestService {
 		return questionForUser;
 		}
 
-	public int calculateScore(Long id, List<Response> response) {
+	public int calculateScore(Long id, Map<String, String> responses) {
 		int score =0;
-		
-		return ;
-	} 
+		 TestQuestion test = testRepo.findById(id).orElse(null);
+
+		    if (test == null) {
+		        return 0; // Handle case where test is not found
+		    }
+
+		    List<Question> questions = test.getQuestion();
+		int i=0;
+		 for (Question question : questions) {
+		        String selectedOption = responses.get("question_" + question.getId());
+		        
+		        if (selectedOption != null && selectedOption.equals(question.getAnsware())) {
+		            score++;
+		        }
+	
+		 } 
+			return score;
+	}	
 	
 	
 }

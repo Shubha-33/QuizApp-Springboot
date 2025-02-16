@@ -1,6 +1,7 @@
 package com.quizApp.Quizapp.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,17 +45,20 @@ public class TestController {
 	 	}
 	 
 	 @GetMapping("GetQuiz/{id}")
-	 public String getTheQuizQuestion(@PathVariable Long id,Model model){
-		 List<QuestionWrapper> question = testService.getQuizQuestions(id);
-		 model.addAttribute("questions", question);
-		 return "Test";
-		 
+	 public String getTheQuizQuestion(@PathVariable Long id, Model model) {
+	     List<QuestionWrapper> question = testService.getQuizQuestions(id);
+	     model.addAttribute("questions", question);
+	     model.addAttribute("id", id);  
+	     return "Test";
 	 }
+
 	
 	 @PostMapping("score/{id}")
-	 public String displayScore(Model model, @PathVariable Long id, List<Response> response ) {
-		int score= testService.calculateScore(id,response);
+	 public String displayScore(Model model, @PathVariable Long id, @RequestParam Map<String, String> responses ) {
+		 int score = testService.calculateScore(id, responses);
+		 int totalQuestions = responses.size();//FOR ADD TOTAL NO OF QUEESTION RESPONSE
 		model.addAttribute("score",score);
+		model.addAttribute("totalQuestions", totalQuestions);
 		 return "Score";
 	 }
 	        

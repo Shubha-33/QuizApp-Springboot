@@ -1,19 +1,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quiz Result</title>
-</head>
-<body>
-    <h2>Quiz Result</h2>
-    <p>Your Score: ${score} out of ${totalQuestions}</p>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <c:choose>
-        <c:when test="${score < (totalQuestions / 2)}">
-            <strong>Better Luck Next Time</strong>
-        </c:when>
-        <c:otherwise>
-            <strong>Good Job!</strong>
-        </c:otherwise>
-    </c:choose>
+</head>
+<body class="bg-light">
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card p-4 shadow-sm" style="max-width: 600px; width: 100%;">
+        <div class="card-body text-center">
+            <h2 class="text-primary">Quiz Result</h2>
+            <p class="fs-4">Your Score: <strong>${score}</strong> out of <strong>${totalQuestions}</strong></p>
+            <p>Wrong Answers: <strong>${wrongAnswers}</strong></p>
+            <p>Skipped Questions: <strong>${skippedAnswers}</strong></p>
+
+            <c:choose>
+                <c:when test="${score < (totalQuestions / 2)}">
+                    <p class="text-danger fw-bold">Better Luck Next Time!</p>
+                </c:when>
+                <c:otherwise>
+                    <p class="text-success fw-bold">Good Job!</p>
+                </c:otherwise>
+            </c:choose>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

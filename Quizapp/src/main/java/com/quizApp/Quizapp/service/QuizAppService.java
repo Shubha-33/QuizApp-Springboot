@@ -57,9 +57,15 @@ public class QuizAppService {
 		
 	}
 	public String DeleteQuestions(Long id) {
-		quizAppRepo.deleteById(id);
-		return "deleted sucessfully";
+	    try {
+	        quizAppRepo.deleteById(id);
+	        
+	        return "Question deleted successfully";
+	    } catch (Exception e) {
+	        return "Error deleting question: " + e.getMessage();
+	    }
 	}
+
 
 	
 

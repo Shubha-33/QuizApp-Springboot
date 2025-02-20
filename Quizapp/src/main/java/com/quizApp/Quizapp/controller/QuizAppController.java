@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.quizApp.Quizapp.model.Question;
 import com.quizApp.Quizapp.service.QuizAppService;
@@ -62,10 +63,12 @@ public class QuizAppController {
 	            @RequestParam(value = "level", required = false) String level,
 	    		Model model) {
 	        List<Question> questions;
-
+	        
+	     // Get all questions
 	        if ((category == null || category.isEmpty()) && (level == null || level.isEmpty())) {
 	            questions = questionService.getAllQuestions();
-	            // Get all questions
+	            
+	            
 	        } else if (category != null && !category.isEmpty()) {
 	        	questions = questionService.getQuestionsByCategory(category);
 	            model.addAttribute("selectedCategory", category); // For category wise questions
@@ -108,7 +111,7 @@ public class QuizAppController {
     @GetMapping("/addQuestion")
     public String showAddQuestionForm(Model model) {
         model.addAttribute("question", new Question());
-        return "QuestionForm";  // This should match the JSP file name
+        return "CreateNewQuestionForm";  // This should match the JSP file name
     }
 
     @PostMapping("/addQuestion")
@@ -141,12 +144,13 @@ public class QuizAppController {
 		 return ResponseEntity.ok(response);
 	    }
 	
-    @GetMapping("/deleteQuestion/{id}")
-	public String deleteQuestion(@PathVariable Long id) {
-		 questionService.DeleteQuestions(id);
-		
-		return "redirect:/question/allquestions"; 
-	}
+	 @GetMapping("/deleteQuestion/{id}")
+	 public String deleteQuestion(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+	     String response = questionService.DeleteQuestions(id);
+	     redirectAttributes.addFlashAttribute("message", response);
+	     return "redirect:/question/allquestions"; 
+	 }
+
 	
 	
 

@@ -1,53 +1,82 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Welcome to Admin page</h2>
-    
-   	 <a href="/question/allquestions"><button>View All Question :</button></a>
-   	 
-   	 <form action="/question/allquestions" method="get">
-   	 <label for="category">Choose a category</label>
-     <select id="category" name="category">
-     <option value="java">Java</option>
-     <option value="python">Python</option>
-     <option value="html">HTML</option>
-     </select>
-      <button type="submit">View Questions</button>
-    </form>
-    
-    <br>
-     <form action="/question/allquestions" method="get">
-   	  <label for="level">Choose a Level</label>
-        <select id="level" name="level" >
-            <option value="easy" >Easy</option>
-            <option value="medium" >Medium</option>
-            <option value="hard">Hard</option>
-        </select>  
-      <button type="submit">View Questions</button>
-    </form>
-    
-    
-     <a href="/question/addQuestion"><button>Add New Question :</button></a>
-     
-    <p>Create Quiz For Test</p>
-   <form action="/test/create" method="post">
-    <label for="testName">Test Name</label><br>
-    <input type="text" id="testName" name="testName" required><br>
-    <label for="number">Number Of Questions:</label><br>
-    <input type="number" id="number" name="num" required><br>
-    <label for="testCategory">Choose a category</label>
-    <select id="testCategory" name="category">
-        <option value="java">Java</option>
-        <option value="python">Python</option>
-        <option value="html">HTML</option>
-    </select>
-    <button type="submit">Create Questions</button>
-</form>
+<body class="bg-light">
 
-    
-    
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-3">Admin Dashboard</h2>
+
+    <!-- Action Buttons -->
+       <div class="card p-3 mb-3">
+        <h5 class="text-center text-secondary">Manage Questions</h5>
+        <div class="d-flex justify-content-center gap-2">
+            <a href="/question/allquestions" class="btn btn-primary w-50 mt-2">View All Questions</a>
+            <a href="/question/addQuestion" class="btn btn-warning w-50 mt-2">Add  New Question</a>
+        </div>
+    </div>
+    <!-- Filter Questions -->
+    <div class="card p-3 mb-3">
+        <h5 class="text-center text-secondary">Filter Questions</h5>
+        <form action="/question/allquestions" method="get">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-select">
+                        <option value="java">Java</option>
+                        <option value="python">Python</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Level</label>
+                    <select name="level" class="form-select">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3 w-100">Apply Filters</button>
+        </form>
+    </div>
+
+    <!-- Create Quiz -->
+    <div class="card p-3">
+        <h5 class="text-center text-secondary">Create Quiz</h5>
+        <form action="/test/create" method="post">
+            <div class="mb-2">
+                <label class="form-label">Test Name</label>
+                <input type="text" name="testName" class="form-control" required>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Number of Questions</label>
+                <input type="number" name="num" class="form-control" required>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select">
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="html">HTML</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Create Quiz</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

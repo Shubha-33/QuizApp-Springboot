@@ -12,17 +12,40 @@
 </head>
 <body class="bg-light">
 
-<div class="container mt-4">
-    <h2 class="text-center text-primary mb-3">Admin Dashboard</h2>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+        <!---<li class="nav-item">
+            <a class="nav-link text-white" href="/question/dashboard">Home</a>-->
 
-    <!-- Action Buttons -->
-       <div class="card p-3 mb-3">
+        <li class="nav-item">
+<a class="nav-link btn  btn-light btn-sm text-dark " style="background-color: white; border-color: gray;" href="/user/logout">Logout</a>
+        </li>
+    </ul>
+</div>
+
+    </div>
+</nav>
+
+<!-- Admin Dashboard Content -->
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-3">Welcome Admin </h2>
+
+    <!-- Manage Questions -->
+    <div class="card p-3 mb-3">
         <h5 class="text-center text-secondary">Manage Questions</h5>
         <div class="d-flex justify-content-center gap-2">
             <a href="/question/allquestions" class="btn btn-primary w-50 mt-2">View All Questions</a>
-            <a href="/question/addQuestion" class="btn btn-warning w-50 mt-2">Add  New Question</a>
+            <a href="/question/addQuestion" class="btn btn-warning w-50 mt-2">Add New Question</a>
         </div>
     </div>
+
     <!-- Filter Questions -->
     <div class="card p-3 mb-3">
         <h5 class="text-center text-secondary">Filter Questions</h5>
@@ -46,7 +69,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success mt-3 w-100">Apply Filters</button>
+            <button type="submit" class="btn btn-success mt-3 w-100">View Questions</button>
         </form>
     </div>
 

@@ -23,6 +23,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.quizApp.Quizapp.model.Question;
 import com.quizApp.Quizapp.service.QuizAppService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("question")
 public class QuizAppController {
@@ -150,6 +152,9 @@ public class QuizAppController {
 	     redirectAttributes.addFlashAttribute("message", response);
 	     return "redirect:/question/allquestions"; 
 	 }
+	 
+	 
+	
 
 	
 	

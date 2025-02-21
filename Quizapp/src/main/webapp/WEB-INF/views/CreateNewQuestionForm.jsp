@@ -14,9 +14,36 @@
 </head>
 <body class="bg-light">
 
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Add New Question</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/question/dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/question/allquestions">All Questions</a>
+                </li>
+                <!--- <li class="nav-item">
+                    <a class="nav-link text-white" href="/question/addQuestion">Add New Question</a>
+                </li>---->
+                <li class="nav-item">
+<a class="nav-link btn  btn-light btn-sm text-dark " style="background-color: white; border-color: gray;" href="/user/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container my-5">
     <div class="bg-white p-4 shadow-sm rounded">
-        <h2 class="text-center text-primary mb-4">Add New Question</h2>
 
         <form id="questionForm" class="row g-3">
             <div class="col-12">
